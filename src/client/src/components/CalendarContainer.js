@@ -1,22 +1,27 @@
 
+import { Calendar, Badge } from 'antd';
+import "../App.css";
+import React from "react";
+import { thistle } from 'color-name';
+
 class CalendarContainer extends React.Component {
     super(props){
-        this.state = {
-            isLoaded: false,
-            error: null,
-            items: [],
-
-        }
+       
+    }
+    state = {
+        isLoaded: false,
+        error: null,
+        items: [],
     }
     componentDidMount(){
-        fetch("").then(es => res.json())
+        fetch("").then(res => res.json())
         .then(
             (result) => {
                 this.setState({
                     isLoaded: true,
                     items: result.items
                 });
-            },
+            },  
             (error) =>{
                 this.setState({
                 isLoaded:true,
@@ -26,15 +31,15 @@ class CalendarContainer extends React.Component {
         )
     }
     render(){
-        if(error){
-            return <div> error {this.state.error.message}</div>
-        }
-        if(!isLoaded){
-            return <h1>Loading</h1>
+        //if(this.state.error){
+          //  return <div> error {this.state.error.message}</div>
+        //}
+        if(this.state.isLoaded){
+            return <Calendar />
         }else{
-            return <h1>Sucess</h1>
+            return <Calendar />
         }
 
-        }
     }
 }
+export default CalendarContainer;
